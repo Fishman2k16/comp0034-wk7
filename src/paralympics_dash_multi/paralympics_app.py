@@ -12,7 +12,10 @@ meta_tags = [
 ]
 
 # Pass the stylesheet variable to the Dash app constructor
-app = Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=meta_tags, use_pages=True)
+app = Dash(__name__,
+           external_stylesheets=external_stylesheets,
+           meta_tags=meta_tags,
+           use_pages=True)
 
 # From https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
 navbar = dbc.NavbarSimple(

@@ -1,6 +1,11 @@
 # Line and bar charts page
-from dash import html, register_page, get_asset_url
+from dash import html, Dash, dcc, register_page, get_asset_url
 import dash_bootstrap_components as dbc
+from figures import line_chart
+
+
+# Create the Plotly Express line chart object, e.g. to show number of sports
+line = line_chart("sports")
 
 # register the page in the app
 register_page(__name__, name="Charts", title="Charts")
@@ -46,11 +51,8 @@ row_two = dbc.Row([
 
 row_three = dbc.Row([
     dbc.Col(children=[
-        html.Img(src=get_asset_url('line-chart-placeholder.png'), className="img-fluid"),
-    ], width=6),
-    dbc.Col(children=[
-        html.Img(src=get_asset_url('bar-chart-placeholder.png'), className="img-fluid"),
-    ], width=6),
+        dcc.Graph(id="line", figure=line)
+        ], width=6)
 ], align="start")
 
 # Add an HTML layout to the Dash app.
